@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'EmpiricRoman';
+    src:url('C:\Users\David\Documentos\1Universidad\Semestre 8\Ingenieria de Software\CAOZ\CAOZ\APP\static\font\EMPORO.TTF') format("truetype");
+}
+
+html{
+    font-family: "EmpiricRoman", serif;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: white;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: black;
+    overflow: hidden;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    z-index: 10000;
+}
+
+.nav-items {
+    display: flex;
+    margin-right: 34%; /* Add some spacing between items */
+    padding-top: 10px;
+}
+
+
+.itemleft {
+    margin-right: auto; /* Push the left item to the left */
+}
+
+.logo {
+    width: 9%;
+}
+
+.logo2 {
+    width: 17%;
+}
+
+.BKvideo{
+    width: 100%;
+}
+
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+
+
+.topnav a{
+    display: inline-block;
+    position: relative;
+}
+
+.topnav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 30%;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.topnav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    gap: 20px; /* Gap between grid items */
+    margin:15%;
+}
+
+.grid-item {
+    background-color: #f0f0f0; /* Background color of grid items */
+    padding: 20px; /* Padding for grid items */
+    border: 1px solid #ccc; /* Border for grid items */
+}

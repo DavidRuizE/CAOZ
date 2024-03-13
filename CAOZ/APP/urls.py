@@ -1,8 +1,9 @@
 from django.urls import path
 from APP.views import *
+from . import views
 
-app_name = "core"
 
 urlpatterns =[
-    path("", base)
+    path("", homePageView.as_view(), name= "home"),
+    path("registro/", views.singupView, name= "registro")
 ]

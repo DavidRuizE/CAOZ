@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     
     # Costum Apps
     'APP',
+    'fontawesomefree',
 ]
+
+AUTH_USER_MODEL = 'APP.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

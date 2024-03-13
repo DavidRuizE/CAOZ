@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<h1 class="heading">Registro </h1>
+<p class="text" >Por favor, llene los siguientes campos para crear su cuenta.</p>
+<br>
+<br>
+<br>
+
+<form method="POST" action="{% url 'registro' %}">
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <strong>Error:</strong> {{ form.errors }}
+    </div>
+    {% endif %}
+    <div class="input-field"><input type="text" name="name" id="inputName" placeholder="Nombre" required autofocus></div>
+    <div class="input-field"><input type="email" name="email" id="inputEmail" placeholder="E-mail" required autofocus> </div>
+    <div class="input-field"><input type="password" name="password1" id="inputPassword1" placeholder="Contraseña" required autofocus></div>
+    <div class="input-field"><input type="password" name="password2" id="inputPassword2" placeholder="Confirmar Contraseña" required autofocus></div>
+    
+    
+    
+    
+    <br>
+    <button class="btn-registro" type="submit">CREAR CUENTA</button>
+</form>
+
+
+{% endblock %}

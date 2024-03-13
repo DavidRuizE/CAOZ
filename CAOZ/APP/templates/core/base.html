@@ -13,33 +13,35 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <div class="topnav">
-        <div class="itemleft">
-            <img src="{% static 'images/LOGOblanco.png' %}" alt="CAOZ" class="logo">
-            <img src="{% static 'images/CAOZblanco.png' %}" alt="CAOZ" class="logo2">
-        </div>
-        <div class="nav-items">
-            <a href=""> PRODUCTOS</a>
-            <a href=""> ORDENES </a>
-            <a href=""> HOMBRE</a>
-            <a href=""> MUJER </a>
-        </div>
-    </div>
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
 </head>
 
-<body style="color: black;">
+<body>
 
-    <video autoplay loop src="{% static 'video/CAOZvideo.mp4' %}" class="BKvideo"></video>
+    <header class="header">
+        <div class="nav-container">
+            <div class="itemleft">
+                <img src="{% static 'images/LOGOblanco.png' %}" alt="CAOZ" class="logo">
+                <img src="{% static 'images/CAOZblanco.png' %}" alt="CAOZ" class="logo2">
+            </div>
+            <div class="nav-items">
+                <a href=""> PRODUCTOS</a>
+                <a href=""> HOMBRE</a>
+                <a href=""> MUJER </a>
+            </div>
+            <div class="itemsright">
+                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href=""><i class="fa-regular fa-envelope"></i></a>
+                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="{% url 'registro' %}"><i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </header>
 
-    <div class="grid-container">
-        <div class="grid-item">
-            <a href="">Columna 1</a>
-        </div>
-        <div class="grid-item">
-            <a href="">Columna 2</a>
-        </div>
-        <!-- Add more grid items here if needed -->
-    </div>
+    <main class="main">
+        {% block content %}
+        {% endblock %}
+    </main>
 
 </body>
 

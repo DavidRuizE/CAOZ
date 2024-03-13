@@ -3,29 +3,57 @@
     src:url('C:\Users\David\Documentos\1Universidad\Semestre 8\Ingenieria de Software\CAOZ\CAOZ\APP\static\font\EMPORO.TTF') format("truetype");
 }
 
-html{
-    font-family: "EmpiricRoman", serif;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    padding: 0px;
-    margin: 0px;
     background-color: white;
+    height: 3000px;
+    font-family: "EmpiricRoman", serif;
+    padding-top: 60px;
 }
 
 /* Add a black background color to the top navigation */
-.topnav {
+
+.header{
     background-color: black;
-    overflow: hidden;
-    justify-content: center;
-    display: flex;
     position: fixed;
+    top:0px;
+    width: 100%;
+}
+
+.nav-container {
+    justify-content: space-between;
+    display: flex;
     z-index: 10000;
+    font-size: large;
+}
+
+.main{
+    margin-top: 80px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.heading{
+    color: black;
+    font-size: 36px;
+    margin-bottom: 24px;
+}
+
+.text{
+    line-height: 1.6;
+    font-size: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .nav-items {
     display: flex;
-    margin-right: 34%; /* Add some spacing between items */
+    margin-right: 31%; /* Add some spacing between items */
     padding-top: 10px;
 }
 
@@ -34,38 +62,26 @@ body {
     margin-right: auto; /* Push the left item to the left */
 }
 
-.logo {
-    width: 9%;
+.itemsright{
+    display: flex;/* Add some spacing between items */
+    padding-top: 10px;
 }
-
-.logo2 {
-    width: 17%;
-}
-
-.BKvideo{
-    width: 100%;
-}
-
 
 /* Style the links inside the navigation bar */
-.topnav a {
+.nav-container a {
     float: left;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
 }
-
 /* Change the color of links on hover */
-
-
-.topnav a{
+.nav-container a{
     display: inline-block;
     position: relative;
 }
 
-.topnav a::after {
+.nav-container a::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -78,15 +94,30 @@ body {
     transition: transform 0.25s ease-out;
 }
 
-.topnav a:hover::after {
+.nav-container a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
 
 /* Add a color to the active/current link */
-.topnav a.active {
+.nav-container a.active {
     background-color: #04AA6D;
     color: white;
+}
+
+
+.logo {
+    width: 9%;
+}
+
+.logo2 {
+    width: 17%;
+}
+
+.BKvideo{
+    width: 100%;
+    padding-top: 0;
+    margin-top: -80px;
 }
 
 .grid-container {
@@ -100,4 +131,27 @@ body {
     background-color: #f0f0f0; /* Background color of grid items */
     padding: 20px; /* Padding for grid items */
     border: 1px solid #ccc; /* Border for grid items */
+}
+
+
+.input-field{
+    position: relative;
+    margin-top: 2px;
+}
+
+.input-field input{
+    position: relative;
+    margin-top: 15px;
+    width: 460px;
+    height: 52px;
+    padding: 0 18px;
+
+}
+
+.btn-registro{
+    margin-top: 15px;
+    width: 460px;
+    height: 52px;
+    background-color: black;
+    color: white;
 }

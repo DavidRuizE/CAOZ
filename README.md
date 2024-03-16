@@ -1,4 +1,4 @@
-"Guia para correr programa CAOZ" 
+*Guia para correr programa CAOZ* 
 
 
 1. **Navegar al directorio del proyecto CAOZ**:

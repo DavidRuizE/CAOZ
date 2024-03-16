@@ -19,17 +19,37 @@ from .models import User
 
 class homePageView(TemplateView):
     template_name = 'core/home.html'
-    
+
+def loginPageView(request):
+    if request.method=="POST":
+        email = request.POST["email"]
+        password = request.POST["password1"]
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, ("Ha iniciado sesión correctamente"))
+            return redirect('home')
+        else:
+            messages.success(request, ("Hubo un error"))
+            return redirect('login')
+    else:
+        return render(request, 'user/login.html', {})
+
+def logoutPageView(request):
+    logout(request)
+    messages.success(request,(" Ha cerrado sesión exitosamente"))
+    return redirect('home')
+
 
 def singupView(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            email = form.cleaned_data.get('email').lower()
-            password = form.cleaned_data.get('password')
+            email = request.POST["email"]
+            password = request.POST["password1"]
             # Log in user
-            user = authenticate(email=email, password=password)
+            user = authenticate(request, email=email, password=password)
             login(request, user)
             messages.success(request, "Has creado la cuenta exitosamente")
             return redirect('home')
@@ -39,3 +59,4 @@ def singupView(request):
         form = SignUpForm()
 
     return render(request, 'user/singup.html', {'form': form})
+

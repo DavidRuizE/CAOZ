@@ -155,3 +155,48 @@ body {
     background-color: black;
     color: white;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding: 20px 80px;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.descuento{
+    background-color: black;
+    color: white;
+    padding: 6px 5px;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.sale-price{
+    color: red;
+}
+
+.product img {
+    max-width: 100%;
+    height: 425px;
+    margin-bottom: 10px;
+}
+
+.product h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.product p {
+    font-size: 16px;
+    margin: 0;
+}

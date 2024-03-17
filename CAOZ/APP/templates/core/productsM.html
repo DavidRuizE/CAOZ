@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+<div class="container">
+    {% for product in products %}
+        <div class="product">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <h2>{{ product.name }}</h2>
+            {% if product.is_sale %}
+                <div class="descuento"> Descuento </div>
+                <p><span class="sale-price">${{ product.sale_price|intcomma }}</span> &nbsp; <strike>${{ product.price|intcomma }}</strike></p>
+            {% else %}
+                <p>${{ product.price|intcomma }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

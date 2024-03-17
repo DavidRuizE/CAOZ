@@ -11,7 +11,7 @@ from django import forms
 from django.urls import reverse
 from django.shortcuts import render
 from .forms import *
-from .models import User
+from .models import *
 
 
 
@@ -59,4 +59,11 @@ def singupView(request):
         form = SignUpForm()
 
     return render(request, 'user/singup.html', {'form': form})
+
+
+def productsPageView(request):
+    products = Product.objects.all()
+    return render(request, 'core/productsM.html', {'products': products})
+
+
 

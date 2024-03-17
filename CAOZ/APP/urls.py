@@ -8,4 +8,6 @@ urlpatterns =[
     path("registro/", views.singupView, name= "registro"),
     path("accede/", views.loginPageView, name= "login"),
     path("logout/", views.logoutPageView, name= "logout"),
+    path("productos/", views.productsPageView, name= "productos"),
+
 ]

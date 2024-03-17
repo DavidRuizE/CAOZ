@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Costum Apps
     'APP',
     'fontawesomefree',
+    'django.contrib.humanize',
 ]
 
 AUTH_USER_MODEL = 'APP.User'

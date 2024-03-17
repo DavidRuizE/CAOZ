@@ -52,3 +52,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.name or self.email.split('@')[0]
     
+class Product(models.Model):
+    name = models.CharField(max_length=255, default='')
+    price = models.IntegerField(default = 0)
+    availability_xs = models.IntegerField( default=0)
+    availability_s = models.IntegerField(default=0)
+    availability_m = models.IntegerField(default=0)
+    availability_l = models.IntegerField(default=0)
+    availability_xl = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='uploads/product/')
+    
+    def __str__(self):
+        return self.name
+    

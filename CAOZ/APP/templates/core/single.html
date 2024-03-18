@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+
+<div class="container flex">
+    <div class="left">
+        <div class="main_image">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="slide">
+        </div>
+    </div>
+    <div class="right">
+        <h3>{{ product.name }}</h3>
+        {% if product.is_sale %}
+        <div class="descuento"> Descuento </div>
+        <h4><span class="sale-price">${{ product.sale_price|intcomma }}</span> &nbsp; <strike>${{ product.price|intcomma }}</strike></h4>
+        {% else %}
+        <h4><small>{{ product.price|intcomma }}</small></h4>
+        {% endif %}
+        <h5>Cantidad</h5>
+        <div class="add flex1"></div>   
+        <span>-</span>
+        <label for="">1</label>
+        <span>+</span>
+        <button> Añadir Al Carrito</button>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

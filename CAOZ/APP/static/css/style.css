@@ -187,7 +187,7 @@ body {
 
 .product img {
     max-width: 100%;
-    height: 425px;
+    height: 350px;
     margin-bottom: 10px;
 }
 
@@ -199,4 +199,24 @@ body {
 .product p {
     font-size: 16px;
     margin: 0;
+}
+
+.product-link{
+    text-decoration: none;
+    color: black;
+}
+
+
+.left, .right {
+    width: 50%;
+    padding: 30px;
+}
+
+.flex1 {
+    display: flex;
+}
+
+.main_image{
+    width: auto;
+    height: auto;
 }

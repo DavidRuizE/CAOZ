@@ -9,5 +9,5 @@ urlpatterns =[
     path("accede/", views.loginPageView, name= "login"),
     path("logout/", views.logoutPageView, name= "logout"),
     path("productos/", views.productsPageView, name= "productos"),
-
+    path("producto/<int:pk>", views.singlePageView, name= "producto"),
 ]

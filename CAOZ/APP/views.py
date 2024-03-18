@@ -65,5 +65,10 @@ def productsPageView(request):
     products = Product.objects.all()
     return render(request, 'core/productsM.html', {'products': products})
 
+def singlePageView(request,pk):
+    product=Product.objects.get(id=pk)
+    return render(request, 'core/single.html', {'product':product})
+    
+
 
 

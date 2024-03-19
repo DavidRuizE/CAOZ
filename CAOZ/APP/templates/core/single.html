@@ -3,30 +3,80 @@
 {% load static %}
 {% block content %}
 
-<div class="container flex">
-    <div class="left">
-        <div class="main_image">
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="slide">
+<div class="product-page-container">
+    <div class="product-view">
+        <div class="product-image">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}  ">
+        </div>
+        <div class="product-details">
+            <h2>{{ product.name }}</h2>
+            {% if product.is_sale %}
+                <div class="descuento"> Descuento </div>
+                <p><span class="sale-price">${{ product.sale_price|intcomma }}</span> &nbsp; <strike>${{ product.price|intcomma }}</strike></p>
+            {% else %}
+                <p>${{ product.price|intcomma }}</p>
+            {% endif %}
+            <hr class="solid">
+            <br>
+            <br>
+            <h3>Talla:</h3>
+
+            <div class="sizes">
+                <input type="radio" id="size_xs" name="size" value="XS">
+                <label for="size_xs">XS</label>
+                <input type="radio" id="size_s" name="size" value="S">
+                <label for="size_s">S</label>
+                <input type="radio" id="size_m" name="size" value="M">
+                <label for="size_m">M</label>
+                <input type="radio" id="size_l" name="size" value="L">
+                <label for="size_l">L</label>
+                <input type="radio" id="size_xl" name="size" value="XL">
+                <label for="size_xl">XL</label>
+            </div>
+            <br>
+
+            <form  method="post">
+                {% csrf_token %}
+                <label for="quantity">Cantidad:</label>
+                <br>
+                <br>
+                <div class="quantity-selector">
+                    <button class="quantity-selector__button" type="button" id="decrement">-</button>
+                    <input class="quantity-selector__input" type="number" id="quantity" name="quantity" value="1" min="1" size="2" autocomplete="off" inputmode="numeric" is="input-numer">
+                    <button class="quantity-selector__button" type="button" id="increment">+</button>
+                </div>
+                <br>
+                <button class="btn-registro" type="submit" value="{{ product.id }}" id="add-cart" >Añadir al carro</button>
+            </form>
         </div>
     </div>
-    <div class="right">
-        <h3>{{ product.name }}</h3>
-        {% if product.is_sale %}
-        <div class="descuento"> Descuento </div>
-        <h4><span class="sale-price">${{ product.sale_price|intcomma }}</span> &nbsp; <strike>${{ product.price|intcomma }}</strike></h4>
-        {% else %}
-        <h4><small>{{ product.price|intcomma }}</small></h4>
-        {% endif %}
-        <h5>Cantidad</h5>
-        <div class="add flex1"></div>   
-        <span>-</span>
-        <label for="">1</label>
-        <span>+</span>
-        <button> Añadir Al Carrito</button>
-    </div>
-
-
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+$(document).on('click', '#add-cart', function(e){
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '{% url 'carro-add' %}',
+        data: {
+            product_id: $('#add-cart').val(),
+            product_qty: $('#quantity').val(),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post',
+        },
+
+        success: function(json){
+           // console.log(json)
+            document.getElementById("cart_quantity").textContent = json.qty
+        },
+
+        error: function(xhr, errmsg, err){
+
+        }
+    });
+})
+</script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>.
 
 {% endblock %}

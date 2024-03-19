@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block content %}
+<div class="registro-salida">
 <h1 class="heading">Inciar Sesion </h1>
 <p class="text" >Por favor introduzca su correo y contraseña.</p>
 <br>
@@ -22,5 +23,7 @@
 </form>
 <br>
 <p>Todavía no tienes cuenta? <a href="{% url 'registro' %}" > Crea tu cuenta Aquí </a></p>
+
+</div>
 
 {% endblock %}

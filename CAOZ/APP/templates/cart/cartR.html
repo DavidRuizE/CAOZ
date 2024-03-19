@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+
+{% if cart_products %}
+    <div class="registro-salida">
+        <h3>Articulos en el carro: <span id="cart_quantity"> {{cart|length}} </span> </h3> 
+    </div>
+        <div class="container">
+            {% for product in cart_products %}
+                <div class="product">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <h2>{{ product.name }}</h2>
+                    {% if product.is_sale %}
+                        <div class="descuento"> Descuento </div>
+                        <p><span class="sale-price">${{ product.sale_price|intcomma }}</span> &nbsp; <strike>${{ product.price|intcomma }}</strike></p>
+                    {% else %}
+                        <p>${{ product.price|intcomma }}</p>
+                    {% endif %}
+                    <br>
+                    <div class="qtyselected">
+                        <p> Cantidad:</p>
+                        <select id="select{{product.id}}">
+                    {% for key, value in quantities.items %}
+                        {% if key == product.id|slugify %}
+                            <option selected>{{ value }}</option>    
+                        {% endif %}
+                    {% endfor %}
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        
+                        <button type="button" data-index="{{product.id}}" class="btn-registro update-cart"> Actualizar</button>
+                        <button type="button" data-index="{{product.id}}" class="btn-registro-peligro delete-product"> Eliminar</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% else %}  
+    <div class="registro-salida">
+        <h1>Todavía no hay productos en su carro...</h1>
+    </div>
+{% endif %}
+
+
+
+<script>
+//update-cart
+$(document).on('click', '.update-cart', function(e){
+    e.preventDefault();
+    var productid = $(this).data('index');
+    $.ajax({
+        type: 'POST',
+        url: '{% url 'carro-update' %}',
+        data: {
+            product_id: $(this).data('index'),
+            product_qty: $('#select' + productid + ' option:selected').text(),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post',
+        },
+
+        success: function(json){
+            // console.log(json)
+            //document.getElementById("cart_quantity").textContent = json.qty
+            location.reload();
+        },
+
+        error: function(xhr, errmsg, err){
+
+        }
+    });
+})
+
+
+//delete Item
+$(document).on('click', '.delete-product', function(e){
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '{% url 'carro_delete' %}',
+        data: {
+            product_id: $(this).data('index'),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post',
+        },
+
+        success: function(json){
+            // console.log(json)
+            //document.getElementById("cart_quantity").textContent = json.qty
+            location.reload();
+        },
+
+        error: function(xhr, errmsg, err){
+
+        }
+    });
+})
+</script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}

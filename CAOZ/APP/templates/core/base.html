@@ -14,6 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,8 +22,8 @@
     <header class="header">
         <div class="nav-container">
             <div class="itemleft">
-                <img src="{% static 'images/LOGOblanco.png' %}" alt="CAOZ" class="logo">
-                <img src="{% static 'images/CAOZblanco.png' %}" alt="CAOZ" class="logo2">
+                <a href="{% url 'home' %}"><img src="{% static 'images/LOGOblanco.png' %}" alt="CAOZ" class="logo"></a>
+                <a href="{% url 'home' %}"><img  src="{% static 'images/CAOZblanco.png' %}" alt="CAOZ" class="logo2"></a>
             </div>
             <div class="nav-items">
                 <a href="{% url 'productos' %}"> PRODUCTOS</a>
@@ -32,7 +33,7 @@
             <div class="itemsright">
                 <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
                 <a href=""><i class="fa-regular fa-envelope"></i></a>
-                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="{% url 'carro' %}"><i class="fa-solid fa-cart-shopping"></i></a>
                 {% if user.is_authenticated %}
                     
                     <a href="{% url 'logout' %}"> Cerrar-Sesión</i></a>

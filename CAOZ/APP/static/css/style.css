@@ -162,7 +162,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
     gap: 20px; /* Gap between grid items */
-    margin:15%;
+    margin:3% 15%;
 }
 
 .grid-item {
@@ -171,6 +171,9 @@ body {
     border: 1px solid #ccc; /* Border for grid items */
 }
 
+.grid-item img{
+    width: 100%;
+}
 
 .input-field{
     position: relative;
@@ -220,6 +223,16 @@ body {
     padding: 20px;
     text-align: center;
     position: relative;
+}
+
+.product-add {
+    display: flex; /* Add flexbox display */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    border: 2px solid #ccc;
+    text-align: center;
+    position: relative;
+    vertical-align: middle;
 }
 
 .descuento{

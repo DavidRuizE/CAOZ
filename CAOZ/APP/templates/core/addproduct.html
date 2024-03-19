@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<form method="POST" action="{% url 'form' %}">
+    {% csrf_token %}
+    {{ form.errors }}
+    <input type="text" class="form-control mb-2" placeholder="Ingrese Nombre" name="nombre"
+        value="{{form.data.nombre }}" />
+    <input type="text" class="form-control mb-2" placeholder="Ingrese Precio" name="price"
+        value="{{form.data.price }}" />
+    <label for="opcion">Ingrese tipo</label>
+    <select name="tipo" class="form-control mb-2" id="opcion">
+        {% for tipo_choice in form.tipo.field.choices %}
+            <option value="{{ tipo_choice.0 }}">{{ tipo_choice.1 }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" class="btn btn-primary" value="Send" />
+</form>
+{% endblock %}

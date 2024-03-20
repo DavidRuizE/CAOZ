@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<div class="registro-salida">
+    <h1>Eliminar Producto</h1>
+    <p>Esta seguro que queire eliminar el producto: "{{ object }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+</div>
+{% endblock %}

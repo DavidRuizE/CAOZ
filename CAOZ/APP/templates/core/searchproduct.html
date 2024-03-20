@@ -4,13 +4,15 @@
 {% block content %}
 <div class="registro-salida">
     <div class="searchbar">
-    <form method="POST" action="{% url 'busqueda-producto' %}">
-        {% csrf_token %}
-        <div class="input-field-busqueda"><input type="search" placeholder="Buscar producto" name="busqueda"> <button class="btn-busqueda" type="submit">Buscar</button>
-        </div> 
-    </form>
+        <form method="POST" action="{% url 'busqueda-producto' %}">
+            {% csrf_token %}
+            <div class="input-field-busqueda"><input type="search" placeholder="BuscarProducto" name="busqueda"> <button class="btn-busqueda" type="submit">Buscar</button>
+            </div> 
+        </form>
     </div>
-    
+    {% if searched %}
+        <h1>El resultado de su busqueda {{ searched }}:</h1>
+    {% endif %}
 </div>
 
     <br>

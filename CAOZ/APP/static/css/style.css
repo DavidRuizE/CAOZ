@@ -3,6 +3,7 @@
     src:url('C:\Users\David\Documentos\1Universidad\Semestre 8\Ingenieria de Software\CAOZ\CAOZ\APP\static\font\EMPORO.TTF') format("truetype");
 }
 
+
 *{
     margin: 0;
     padding: 0;
@@ -19,8 +20,9 @@ input[type="number"] {
 body {
     background-color: white;
     height: 3000px;
-    font-family: "EmpiricRoman", serif;
+    /*font-family: "EmpiricRoman", serif;*/
     padding-top: 60px;
+    font-family: "Rubik", sans-serif;
 }
 
 /* Add a black background color to the top navigation */
@@ -34,9 +36,9 @@ body {
 }
 
 .nav-container {
-    justify-content: space-between;
     display: flex;
-    font-size: large;
+    font-size: 18px;
+    justify-content: space-between;
 }
 
 .main{
@@ -49,6 +51,26 @@ body {
     margin-bottom: 24px;
 }
 
+.alert{
+    width: 100%;
+    background-color: black;
+    height: 40px;
+    margin-top: -73px;
+    margin-bottom: 40px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-top: 0.5px solid white;
+}
+
+.alert p{
+    color: white;
+    font-size: 19px;
+    padding-top: 7px;
+}
+
+
+
 .text{
     line-height: 1.6;
     font-size: 16px;
@@ -57,35 +79,37 @@ body {
 }
 
 .nav-items {
+    padding: 5px;
     display: flex;
-    margin-right: 30%; /* Add some spacing between items */
-    padding-top: 10px;
+    justify-content: space-between;
+    margin-left: 5%;
 }
 
 
 .itemleft {
-    margin-right: auto; /* Push the left item to the left */
+    left: 0;
+    padding: 5px; /* Push the left item to the left */
 }
 
 .itemsright{
-    display: flex;/* Add some spacing between items */
-    padding-top: 10px;
+    right: 0;/* Add some spacing between items */
+    padding: 5px;
 }
 
 /* Style the links inside the navigation bar */
 .nav-items a {
-    float: left;
     color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 16px 16px;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
 }
 
 .itemsright a {
     float: left;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px 16px;
     text-decoration: none;
 }
 /* Change the color of links on hover */
@@ -145,11 +169,11 @@ body {
 }
 
 .logo {
-    width: 9%;
+    width: 50px;
 }
 
 .logo2 {
-    width: 17%;
+    width: 110px;
 }
 
 .BKvideo{
@@ -180,6 +204,11 @@ body {
     margin-top: 2px;
 
 }
+.input-field-busqueda{
+    position: relative;
+    margin-top: -15px;
+
+}
 
 .input-field input{
     position: relative;
@@ -189,10 +218,45 @@ body {
     padding: 0 18px;
 
 }
+.input-field-busqueda input{
+    position: relative;
+    margin-top: 15px;
+    width: 460px;
+    height: 52px;
+    padding: 0 18px;
+
+}
+
+.hyperv a{
+    color:black
+}
 
 .btn-registro{
     margin-top: 15px;
     width: 460px;
+    height: 52px;
+    background-color: black;
+    color: white;
+    border: 1px black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-pago{
+    margin-top: 15px;
+    width: 460px;
+    height: 52px;
+    background-color: black;
+    color: white;
+    border: 1px black;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.btn-registro-cart{
+    margin-top: 15px;
+    width: 100%;
     height: 52px;
     background-color: black;
     color: white;
@@ -211,6 +275,27 @@ body {
     cursor: pointer;
 }
 
+.btn-registro-peligro-cart{
+    margin-top: 15px;
+    width: 100%;
+    height: 52px;
+    background-color: rgb(194, 46, 46);
+    color: white;
+    border: 1px black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-busqueda{
+    width: 150px;
+    height: 52px;
+    background-color: black;
+    color: white;
+    border: 1px solid black; /* Specify border style */
+    border-radius: 0 3px 3px 0; /* Rounded corners for right side of button */
+    cursor: pointer;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -225,6 +310,23 @@ body {
     position: relative;
 }
 
+.btn-edit{
+    margin-top: 15px;
+    width: 100%;
+    height: 52px;
+    background-color: black;
+    color: white;
+    border: 1px black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.nolink{
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+}
+
 .product-add {
     display: flex; /* Add flexbox display */
     justify-content: center; /* Center horizontally */
@@ -233,6 +335,13 @@ body {
     text-align: center;
     position: relative;
     vertical-align: middle;
+    background-color: black;
+
+}
+
+.product-add a {
+    color: white;
+    text-decoration: none;
 }
 
 .descuento{
@@ -274,7 +383,7 @@ body {
 
 .product-page-container {
     width: 100%;
-    max-width: 1600px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 40px;
@@ -386,5 +495,4 @@ body {
     font: inherit;
     text-align: center;
     margin: 1px;
-
 }

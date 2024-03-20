@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<div class="registro-salida">
+    <h2>Editar Producto {{ product.name }} </h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Error:</strong> {{ form.errors }}
+        </div>
+        {% endif %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 200px;">
+        {% for field in form.visible_fields %}
+        {% if field.name != 'image' %} 
+            <div class="input-field">
+                {{ field }}
+            </div>
+        {% endif %}
+    {% endfor %}
+        <button class="btn-registro" type="submit">Añadir producto</button>
+        <a href="{% url 'eliminar-producto' product.pk %}" class="btn btn-danger">Eliminar</a>
+    </form>
+</div>
+{% endblock %}
+
+<a class="nolink" href="{% url 'eliminar-producto' product.pk %}"> <button class="btn-registro-peligro"> Eliminar </button></a>

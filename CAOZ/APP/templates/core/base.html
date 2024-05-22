@@ -30,6 +30,9 @@
                 <a href="{% url 'productos' %}"> PRODUCTOS</a>
                 <a href="{% url 'productosH' %}"> HOMBRE</a>
                 <a href="{% url 'productosM' %}"> MUJER </a>
+                {% if user.is_authenticated and user.is_superuser %}
+                    <a href="{% url 'clients' %}">CLIENTES</a>
+                {% endif %}
             </div>
             <div class="itemsright">
                 <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -52,8 +55,8 @@
         <div class="alert"><p> {{message}} </p></div>
         {% endfor %}
         {% endif %}
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
+        {% block extra_js %}{% endblock %}
     </main>
 
 </body>

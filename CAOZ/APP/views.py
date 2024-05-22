@@ -10,19 +10,22 @@ from django.http import HttpResponseRedirect
 from django.views import View
 from django import forms
 from django.urls import reverse
-from django.shortcuts import render
 from .forms import *
 from .models import *
 from .cart import Cart
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, DeleteView
+import requests 
+from .utils import *
+from django.conf import settings
 
 
-# Create your views here.
 
-class homePageView(TemplateView):
-    template_name = 'core/home.html'
+def homePageView(request):
+    google_maps_api_key = settings.GOOGLE_MAPS_API_KEY
+    return render(request, 'core/home.html', {'google_maps_api_key': google_maps_api_key})
+
 
 def loginPageView(request):
     if request.method=="POST":
@@ -55,7 +58,6 @@ def singupView(request):
             # Log in user
             user = authenticate(request, email=email, password=password)
             login(request, user)
-            messages.success(request, "Has creado la cuenta exitosamente")
             return redirect('home')
         else:
             pass
@@ -163,3 +165,22 @@ def cartUpdatePageView(request):
         response= JsonResponse({'qty': product_qty})
         return response
         #return redirect('cart/cartR.html')
+        
+def productListPageView(request):
+    clientes = getProducts()
+    return render(request, 'tu_plantilla.html', {'clientes': clientes})
+
+
+def clientsPageView(request):
+    api_url = 'http://35.238.42.183:8000/clientes'
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        clientes = response.json()
+    except requests.exceptions.HTTPError as http_err:
+        print(f'HTTP error occurred: {http_err}')
+        clientes = []
+    except Exception as err:
+        print(f'Other error occurred: {err}')
+        clientes = []
+    return render(request, 'cart/clients.html', {'clientes': clientes})

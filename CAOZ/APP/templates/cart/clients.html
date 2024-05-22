@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% block content %}
+{% load humanize %}
+<h1>Lista de Clientes y sus Productos</h1>
+<div class="container">
+    {% for cliente in clientes %}
+    <div class="product">
+        <h2>{{ cliente.nombre_cliente }}</h2>
+            <ul>
+            {% for producto in cliente.productos %}
+                <li>
+                    <strong>{{ producto.nombre }}</strong><br>
+                    Talla: {{ producto.talla }}<br>
+                    Precio: {{ producto.precio|intcomma }}<br>
+                    <a href="{{ producto.enlace }}">Ver Producto</a><br>
+                    Cantidad Disponible:
+                    {% if producto.cantidad_disponible_S %} S: {{ producto.cantidad_disponible_S }}{% endif %}
+                    {% if producto.cantidad_disponible_M %} M: {{ producto.cantidad_disponible_M }}{% endif %}
+                    {% if producto.cantidad_disponible_L %} L: {{ producto.cantidad_disponible_L }}{% endif %}
+                    {% if producto.cantidad_disponible_XL %} XL: {{ producto.cantidad_disponible_XL }}{% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

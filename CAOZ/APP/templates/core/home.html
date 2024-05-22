@@ -3,18 +3,38 @@
 {% block content %}
 <video autoplay loop src="{% static 'video/CAOZvideo.webm' %}" class="BKvideo"></video>
 
-
-    <h1 style="text-align: center; margin-top: 10%;">CAOZ CONCEPT</h1>
-    <div class="grid-container">
-        <div class="grid-item">
-            <img src="{% static 'images/concepto1.jpg' %}" alt="CAOZ" class="logo">
-        </div>
-        <div class="grid-item">
-            <img src="{% static 'images/concepto2.jpg' %}" alt="CAOZ" class="logo">
-        </div>
-        <!-- Add more grid items here if needed -->
+<h1 style="text-align: center; margin-top: 10%;">CAOZ CONCEPT</h1>
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'images/concepto1.jpg' %}" alt="CAOZ" class="logo">
     </div>
+    <div class="grid-item">
+        <img src="{% static 'images/concepto2.jpg' %}" alt="CAOZ" class="logo">
+    </div>
+    <!-- Add more grid items here if needed -->
+</div>
+<br>
+<div style="text-align: center;">
+    <h1>Ubicación de la Tienda en Medellín</h1>
+    <br>
+    <div id="map" style="height: 400px; width: 70%; margin: 0 auto;"></div>
+</div>
 
-    
+{% endblock %}
 
+{% block extra_js %}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap"></script>
+<script>
+function initMap() {
+    var tienda = {lat: 6.208086298948842, lng: -75.55930856615879}; // Coordenadas de Medellín
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: tienda
+    });
+    var marker = new google.maps.Marker({
+        position: tienda,
+        map: map
+    });
+}
+</script>
 {% endblock %}

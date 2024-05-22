@@ -32,6 +32,7 @@
                 <a href="{% url 'productosM' %}"> MUJER </a>
                 {% if user.is_authenticated and user.is_superuser %}
                     <a href="{% url 'clients' %}">CLIENTES</a>
+                    <a href="{% url 'notes-index' %}">NOTAS</a>
                 {% endif %}
             </div>
             <div class="itemsright">

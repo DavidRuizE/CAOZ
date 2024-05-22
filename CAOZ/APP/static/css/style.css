@@ -19,7 +19,7 @@ input[type="number"] {
 
 body {
     background-color: white;
-    height: 2600px;
+    height: 3000px;
     /*font-family: "EmpiricRoman", serif;*/
     padding-top: 60px;
     font-family: "Rubik", sans-serif;
@@ -51,23 +51,19 @@ body {
     margin-bottom: 24px;
 }
 
-/* .alert{
+.alert{
     width: 100%;
-    background-color: black;
-    height: 40px;
-    margin-top: -73px;
-    margin-bottom: 40px;
+    background-color: white;
+    height: auto !important;
+    color: black !important;
     align-items: center;
+    padding: 5px;
     justify-content: center;
     text-align: center;
-    border-top: 0.5px solid white;
-} */
+    border-top: 0.5px solid black;
+    border-bottom: 0.5px solid black;
 
-/* .alert p{
-    color: white;
-    font-size: 19px;
-    padding-top: 7px;
-} */
+}
 
 
 
@@ -299,6 +295,13 @@ body {
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding: 20px 80px;
+}
+
+.container2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     padding: 20px 80px;
 }

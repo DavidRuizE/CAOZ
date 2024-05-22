@@ -21,4 +21,8 @@ urlpatterns =[
     path('producto/<int:pk>/delete/', ProductDeleteView.as_view(), name='eliminar-producto'),
     path("busqueda-producto/", views.searchPageView, name="busqueda-producto"),
     path('clientes/', clientsPageView, name='clients'),
+    path('notas/registro/', registro_view, name='registro-notas'),
+    path('notas/login/', login_view, name='login-notas'),
+    path('notas/nota/', notas_view, name='notas'),
+    path('notas/', notes_view, name='notes-index'),
 ]

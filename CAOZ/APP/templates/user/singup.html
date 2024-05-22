@@ -11,16 +11,17 @@
 <form method="POST" action="{% url 'registro' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {% if form.errors %}
-    <div class="alert alert-danger">
-        <strong>Error:</strong> {{ form.errors }}
-    </div>
-    {% endif %}
+
     <div class="input-field"><input type="text" name="name" id="inputName" placeholder="Nombre" required autofocus></div>
     <div class="input-field"><input type="email" name="email" id="inputEmail" placeholder="E-mail" required autofocus> </div>
     <div class="input-field"><input type="password" name="password1" id="inputPassword1" placeholder="Contraseña" required autofocus></div>
     <div class="input-field"><input type="password" name="password2" id="inputPassword2" placeholder="Confirmar Contraseña" required autofocus></div>
     
     <br>
+    <div class="alert">
+        <strong>Error:</strong> {{ form.errors }}
+    </div>
+    {% endif %}
     <button class="btn-registro" type="submit">CREAR CUENTA</button>
 </form>
 

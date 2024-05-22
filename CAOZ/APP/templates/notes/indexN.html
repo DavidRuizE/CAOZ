@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="registro-salida">
+<h1>Gestion APi</h1>
+<br>
+<div class="container2">
+
+
+    <a href="{% url 'registro-notas' %}" style="text-decoration: none; color: white;"><button class="btn-busqueda" type="submit"> Registro</button></a>
+    <a href="{% url 'login-notas' %}" style="text-decoration: none; color: white;"><button class="btn-busqueda" type="submit"> Login</button></a>
+    <a href="{% url 'notas' %}" style="text-decoration: none; color: white;"><button class="btn-busqueda" type="submit"> Nota</button></a>
+        
+</div>
+</div>
+{% endblock %}

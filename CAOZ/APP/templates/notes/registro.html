@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="registro-salida">
+    <h1>Registro</h1>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="input-field"> <input type="text" id="username" name="username" placeholder="Usuario" required> </div> 
+        <div class="input-field"> <input type="email" id="email" name="email" placeholder="Email" required> </div>
+        <div class="input-field"> <input type="password" id="password" name="password" placeholder="Contraseña" required> </div> 
+        <br>
+        <br>
+        <button class="btn-busqueda" type="submit"> Registrarse</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,15 +1,15 @@
 {% extends 'core/base.html' %}
 {% block content %}
 {% load humanize %}
-<h1>Lista de Clientes y sus Productos</h1>
+<h1 style="text-align: center;">Lista de Clientes y sus Productos</h1>
 <div class="container">
     {% for cliente in clientes %}
     <div class="product">
         <h2>{{ cliente.nombre_cliente }}</h2>
-            <ul>
+            
             {% for producto in cliente.productos %}
                 <li>
-                    <strong>{{ producto.nombre }}</strong><br>
+                    {{ producto.nombre }}<br>
                     Talla: {{ producto.talla }}<br>
                     Precio: {{ producto.precio|intcomma }}<br>
                     <a href="{{ producto.enlace }}">Ver Producto</a><br>
@@ -19,8 +19,9 @@
                     {% if producto.cantidad_disponible_L %} L: {{ producto.cantidad_disponible_L }}{% endif %}
                     {% if producto.cantidad_disponible_XL %} XL: {{ producto.cantidad_disponible_XL }}{% endif %}
                 </li>
+                <br>
             {% endfor %}
-            </ul>
+            
     </div>
     {% endfor %}
 </div>

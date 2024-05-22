@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="registro-salida">
+    <h1>Notas</h1>
+    <br>
+    {% if notas %}
+        <ul>
+            {% for nota in notas %}
+                <li>{{ nota }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron notas.</p>
+    {% endif %}
+</div>
+{% endblock %}

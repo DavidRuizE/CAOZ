@@ -184,3 +184,43 @@ def clientsPageView(request):
         print(f'Other error occurred: {err}')
         clientes = []
     return render(request, 'cart/clients.html', {'clientes': clientes})
+
+# myapp/views.py
+from django.shortcuts import render
+
+def notes_view(request):
+    return render(request, 'notes/indexN.html')
+
+
+def registro_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        response = registerUser(username, email, password)
+        if 'token' in response:
+            messages.success(request, 'Registro exitoso. Por favor, inicie sesión.')
+            return redirect('login-notas')
+        else:
+            messages.error(request, response.get('error', 'Error en el registro'))
+    return render(request, 'notes/registro.html')
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        response = loginUser(username, password)
+        if 'token' in response:
+            request.session['token'] = response['token']
+            return redirect('notes-index')
+        else:
+            messages.error(request, response.get('error', 'Error en el inicio de sesión'))
+    return render(request, 'notes/login.html')
+
+def notas_view(request):
+    token = request.session.get('token')
+    if not token:
+        messages.error(request, 'Debe iniciar sesión primero.')
+        return redirect('notes-index')
+    notas = getNotes(token)
+    return render(request, 'notes/notas.html', {'notas': notas})
